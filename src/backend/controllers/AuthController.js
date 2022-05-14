@@ -98,19 +98,19 @@ export const loginHandler = function (schema, request) {
   }
 };
 
-export const checkToken = function (schema, request) {
-  const userId = requiresAuth.call(this, request);
-  try {
-    if (!userId) {
-      new Response(404, {}, { result: "User Not available / Token not valid" });
-    }
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
-};
+// export const checkToken = function (schema, request) {
+//   const userId = requiresAuth.call(this, request);
+//   try {
+//     if (!userId) {
+//       new Response(404, {}, { result: "User Not available / Token not valid" });
+//     }
+//   } catch (error) {
+//     return new Response(
+//       500,
+//       {},
+//       {
+//         error,
+//       }
+//     );
+//   }
+// };

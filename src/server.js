@@ -2,11 +2,11 @@ import { Server, Model, RestSerializer } from "miragejs";
 import {
   loginHandler,
   signupHandler,
-  // checkToken,
+  verifyUser,
 } from "./backend/controllers/AuthController";
 import {
   getAllCategoriesHandler,
-  getCategoryHandler,
+  getCategoryQuizesHandler,
 } from "./backend/controllers/CategoryController";
 import {
   addQuizHandler,
@@ -61,9 +61,7 @@ export function makeServer({ environment = "development" } = {}) {
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
-
-      //check token (private)
-      // this.post("/auth/checktoken", checkToken.bind(this));
+      this.post("/auth/verify", verifyUser.bind(this));
 
       // quizes routes (public)
       this.get("/quizzes", getAllQuizesHandler.bind(this));
@@ -75,7 +73,7 @@ export function makeServer({ environment = "development" } = {}) {
 
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
-      this.get("/categories/:categoryId", getCategoryHandler.bind(this));
+      this.get("/categories/:category", getCategoryQuizesHandler.bind(this));
 
       // quizes routes (private)
       this.post("/quizzes", addQuizHandler.bind(this));

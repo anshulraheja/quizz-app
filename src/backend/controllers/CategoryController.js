@@ -26,14 +26,14 @@ export const getAllCategoriesHandler = function () {
 
 /**
  * This handler handles gets all categories in the db.
- * send GET Request at /api/user/category/:categoryId
+ * send GET Request at /api/user/category/:category
  * */
 
-export const getCategoryHandler = function (schema, request) {
-  const categoryId = request.params.categoryId;
+export const getCategoryQuizesHandler = function (schema, request) {
+  const category = request.params.category;
   try {
-    const category = schema.categories.findBy({ _id: categoryId });
-    return new Response(200, {}, { category });
+    const quizes = schema.quizzes.where({ category });
+    return new Response(200, {}, { quizes });
   } catch (error) {
     return new Response(
       500,

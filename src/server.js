@@ -2,7 +2,7 @@ import { Server, Model, RestSerializer } from "miragejs";
 import {
   loginHandler,
   signupHandler,
-  checkToken,
+  // checkToken,
 } from "./backend/controllers/AuthController";
 import {
   getAllCategoriesHandler,
@@ -63,7 +63,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/auth/login", loginHandler.bind(this));
 
       //check token (private)
-      this.post("/auth/checktoken", checkToken.bind(this));
+      // this.post("/auth/checktoken", checkToken.bind(this));
 
       // quizes routes (public)
       this.get("/quizzes", getAllQuizesHandler.bind(this));

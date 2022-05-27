@@ -1,23 +1,42 @@
 import './CategoryPage.css'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {useCategory} from '../../context/category-context';
 import Navbar from '../../components/Navbar/Navbar';
-import RulePage from '../RulePage/RulePage';
 import { useQuiz } from '../../context/quiz-context';
-const CategoryPage = () => {
-    const {categories} = useCategory();
-    const [isRuleOpen, setIsRuleOpen] = useState(false)
-    const {setSelectedQuizId} = useQuiz();
+import { useNavigate, useLocation } from 'react-router-dom';
 
-    const playQuiz = (id) => {
-        setSelectedQuizId(id)
-        setIsRuleOpen(true);
+const CategoryPage = () => {
+    const {categories, selectdCategory, getQuizzesInCategory} = useCategory();
+    const {setSelectedQuizId} = useQuiz();
+    const [isCategoryActive, setIsCategoryActive] = useState(false);
+
+    let navigate = useNavigate();
+    const {pathname} = useLocation();
+
+    useEffect(() => {
+        if(pathname==='/category'){
+            setIsCategoryActive(false);
+        }   
+        else if(pathname.split("/").length > 1){
+            getQuizzesInCategory(pathname.split("/")[2]);
+            setIsCategoryActive(true);
+        }
+    },[pathname])
+
+    const playQuiz = (item) => {
+        navigate(`/quiz/${item._id}`)
+        setSelectedQuizId(item._id);
     } 
 
+    const openCategory = (categoryName) => {
+        getQuizzesInCategory(categoryName)
+        setIsCategoryActive(true)
+        navigate(`/category/${categoryName}`);
+    }
   return (
     <div className="category-container">
         <Navbar />
-        <div className="category-page-content">
+        {isCategoryActive == false && <div className="category-page-content">
             <h2 className="category-title">Categories</h2>
             {
                 categories.length > 0 ? 
@@ -33,7 +52,7 @@ const CategoryPage = () => {
                                     <h5 className="description-content">{category.description}</h5>
                                 </div>
                                 <div className="category-btn-container">
-                                    <button onClick={() => playQuiz(category._id)} className="btn-play">Play</button>
+                                    <button onClick={() => openCategory(category.category)} className="btn-play">Play</button>
                                 </div>
                             </div>
                         </div>
@@ -45,11 +64,31 @@ const CategoryPage = () => {
                 </div>
             }
         </div>
+        }
         {
-            isRuleOpen && 
-            <RulePage 
-            closeRuleModal={() => setIsRuleOpen(false)}
-            />
+            isCategoryActive && <div className="category-page-content">
+            <h2 className="category-title">Categories</h2>
+            <div className="category-card-container">{selectdCategory.map(item => {
+                return (
+                    <div className="category-card" key={item._id}>
+                            <div className="category-card-image-container">
+                                <img src="https://picsum.photos/200" alt="tech-stack"/>
+                            </div>
+                            <div className="category-card-info">
+                                <div>
+                                    <h3>{item.title}</h3>
+                                    <h5 className="description-content">{item.subtile}</h5>
+                                </div>
+                                <div className="category-btn-container">
+                                    <button className="btn-play" onClick={() =>  playQuiz(item)}>Play</button>
+                                </div>
+                            </div>
+                    </div>
+                )
+
+            })}
+            </div>
+            </div>
         }
     </div>
   )

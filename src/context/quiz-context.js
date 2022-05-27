@@ -1,56 +1,41 @@
-import { useContext, createContext, useState, useEffect } from 'react';
+import { useContext, createContext, useState } from 'react';
 import { useToast } from './toast-context'
 import axios from 'axios'
+
 const QuizContext = createContext();
 
-
-
-
-
 const QuizProvider = ({ children }) => {
-    const [filteredQuiz, setFilteredQuiz] = useState();
     const [selectedQuizId, setSelectedQuizId] = useState();
-    const [allQuiz, setAllQuiz] = useState();
+    const [questions, setQuestions] = useState([]);
     const { errorToast } = useToast();
 
-    const getAllQuiz = async () => {
-        try {
-            const response = await axios.get("/api/quizzes");
-            console.log(response);
-            setAllQuiz(response.data.quizes);
-
-        } catch (error) {
-            errorToast("Not able to get quiz. Please refresh and try again")
-
+    const getQuizById = async (id = undefined) => {
+        if (id) {
+            try {
+                const response = await axios.get(`/api/quizzes/${id}`);
+                console.log(response.data.quiz.mcqs)
+                setQuestions(response.data.quiz.mcqs);
+            } catch (error) {
+                errorToast("Not able to get filtered1 quiz. Please refresh and try again!")
+            }
         }
-    }
 
-    const getQuizById = async (id) => {
-        try {
-            const response = await axios.get(`/api/quizzes/${id}`);
-            console.log(response);
-            setFilteredQuiz(response.data.quiz);
-        } catch (error) {
-            errorToast("Not able to get filtered quiz. Please refresh and try again!")
+        else {
+            try {
+                const response = await axios.get(`/api/quizzes/${selectedQuizId}`);
+                setQuestions(response.data.quiz.mcqs);
+            } catch (error) {
+                errorToast("Not able to get filtered1 quiz. Please refresh and try again!")
+            }
         }
+
     }
-
-    const getQuizByCategory = () => {
-        try {
-
-        } catch (error) {
-
-        }
-    }
-
-    useEffect(() => {
-        getAllQuiz();
-        getQuizById("3fe39675-140b-4075-82f3-949a4dc95d18");
-    }, [])
     return (
         <QuizContext.Provider
             value={{
-                setSelectedQuizId
+                setSelectedQuizId,
+                getQuizById,
+                questions
             }}>
             {children}
         </QuizContext.Provider>

@@ -13,7 +13,6 @@ const QuizProvider = ({ children }) => {
         if (id) {
             try {
                 const response = await axios.get(`/api/quizzes/${id}`);
-                console.log(response.data.quiz.mcqs)
                 setQuestions(response.data.quiz.mcqs);
             } catch (error) {
                 errorToast("Not able to get filtered1 quiz. Please refresh and try again!")

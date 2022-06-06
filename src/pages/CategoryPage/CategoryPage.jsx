@@ -6,12 +6,11 @@ import { useQuiz } from '../../context/quiz-context';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const CategoryPage = () => {
-    const {categories, selectdCategory, getQuizzesInCategory} = useCategory();
+    const {getCategories, getQuizzesInCategory, category : {categories, categoryQuiz, categoryName}} = useCategory();
     const {setSelectedQuizId} = useQuiz();
     const [isCategoryActive, setIsCategoryActive] = useState(false);
-
     let navigate = useNavigate();
-    const {pathname} = useLocation();
+    const {pathname } = useLocation();
 
     useEffect(() => {
         if(pathname==='/category'){
@@ -23,36 +22,41 @@ const CategoryPage = () => {
         }
     },[pathname])
 
+    useEffect(() => {
+        getCategories();
+    }, [])
+
     const playQuiz = (item) => {
         navigate(`/quiz/${item._id}`)
         setSelectedQuizId(item._id);
     } 
 
-    const openCategory = (categoryName) => {
-        getQuizzesInCategory(categoryName)
+    const openCategory = (selectedCategoryName) => {
+        getQuizzesInCategory(selectedCategoryName)
         setIsCategoryActive(true)
-        navigate(`/category/${categoryName}`);
+        navigate(`/category/${selectedCategoryName}`);
     }
+
   return (
-    <div className="category-container">
+    <div className="main-container">
         <Navbar />
         {isCategoryActive == false && <div className="category-page-content">
             <h2 className="category-title">Categories</h2>
             {
                 categories.length > 0 ? 
-                <div className="category-card-container">{categories.map(category => {
+                <div className="category-card-container">{categories.map(item => {
                     return(
-                        <div className="category-card" key={category._id}>
+                        <div className="category-card" key={item._id}>
                             <div className="category-card-image-container">
-                                <img src="https://picsum.photos/200" alt="tech-stack"/>
+                                <img src={item.img} alt="tech-stack"/>
                             </div>
                             <div className="category-card-info">
                                 <div>
-                                    <h3>{category.categoryName}</h3>
-                                    <h5 className="description-content">{category.description}</h5>
+                                    <h3>{item.categoryName}</h3>
+                                    <h5 className="description-content">{item.description}</h5>
                                 </div>
                                 <div className="category-btn-container">
-                                    <button onClick={() => openCategory(category.category)} className="btn-play">Play</button>
+                                    <button onClick={() => openCategory(item.category)} className="btn-play">Open</button>
                                 </div>
                             </div>
                         </div>
@@ -67,12 +71,12 @@ const CategoryPage = () => {
         }
         {
             isCategoryActive && <div className="category-page-content">
-            <h2 className="category-title">Categories</h2>
-            <div className="category-card-container">{selectdCategory.map(item => {
+            <h2 className="category-title">{categoryName}</h2>
+            <div className="category-card-container">{categoryQuiz.map(item => {
                 return (
                     <div className="category-card" key={item._id}>
                             <div className="category-card-image-container">
-                                <img src="https://picsum.photos/200" alt="tech-stack"/>
+                                <img src={item.image} alt="tech-stack"/>
                             </div>
                             <div className="category-card-info">
                                 <div>

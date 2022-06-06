@@ -1,7 +1,7 @@
-.category-container{
+/* .category-container{
     display: flex;
     height: 100vh;
-}
+} */
 .category-page-content{
     margin: 1rem;
     flex: 1 1 70%;
@@ -26,6 +26,7 @@
 
 .category-card-image-container {
     width: 100%;
+    height: 200px;
 }
 .category-card-image-container > img {
     height: 100%;

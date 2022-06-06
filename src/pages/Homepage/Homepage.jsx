@@ -7,12 +7,12 @@ const Homepage = () => {
   const {auth} = useAuth();
 
   return (
-    <div className="homepage-container">
+    <div className="main-container">
         <Navbar/>
         <div className="homepage-content">
           
-            <h1>Welcome to Web Dev Quiz</h1>
-            <h2>Select
+            <h1 className="homepage-header">Welcome to Web Dev Quiz</h1>
+            <h2 className="homepage-subheader">Select
               <Link to="/category" className="category-btn">categories</Link>
               to play quiz
             </h2>

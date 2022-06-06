@@ -28,7 +28,33 @@
     --COLOR-BTN-LOGIN: #477644;
     --COLOR-BTN-GOOGLE-TEXT: #757575 ;
     --COLOR-BTN-FB: #4267b2;
+    --COLOR-WHITE: #FFFFFF;
+    --COLOR-BLACK: #000000;
+    --COLOR-GREY: GREY;
 
+    --COLOR-BODY: #007bff;
+
+    --COLOR-TITLE-TEXT: #4b126f;
+
+    --COLOR-CATEGORY-INFO: #434242;
+
+    --COLOR-BORDER: #d3d3d3;
+    --COLOR-BTN-QUIZ: #ed0808;
+
+    --COLOR-BTN-NEXT-QUESTION: #0263ca;
+    --COLOR-TIMER-TEXT: #004085;
+    --COLOR-TIMER-BKGD: #cce5ff;
+    --COLOR-TIMER-BORDER: #b8daff;
+    --COLOR-OPTION-BKGD: #f0f8ff;
+    --COLOR-OPTION-BORDER: #84c5fe;
+    --COLOR-OPTION-CORRECT-TEXT: #155724;
+    --COLOR-OPTION-CORRECT-BKGD: #d4edda ;
+    --COLOR-OPTION-CORRECT-BORDER: #c3e6cb ;
+    --COLOR-OPTION-INCORRECT-TEXT: #721c24 ;
+    --COLOR-OPTION-INCORRECT-BKGD: #f8d7da ;
+    --COLOR-OPTION-INCORRECT-BORDER: #f5c6cb ;
+
+    --COLOR-BTN_QUIT: #ef5f5f;
 }
 *{
     box-sizing: border-box;
@@ -48,4 +74,8 @@ a{
 }
 li {
     list-style: none;
+}
+.main-container{
+    display: flex;
+    height: 100vh;
 }

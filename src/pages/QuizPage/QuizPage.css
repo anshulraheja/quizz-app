@@ -5,6 +5,40 @@
     height: 100vh;
     width: 100%;
 }
+.rule-container{
+    border: 1px solid var(--COLOR-TIMER-TEXT);
+    background: var(--COLOR-OPTION-BORDER);
+    border-radius: 10px;
+    /* max-width: 500px; */
+    padding: 1rem;
+    margin: auto;
+}
+.rule-list{
+    margin: 1rem;
+}
+.rule-list > li {
+    list-style-type: disc;
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+}
+.rule-btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+.rule-btn-container > button {
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+}
+.quiz-start-btn{
+    background: var(--COLOR-OPTION-CORRECT-TEXT);
+    color: var(--COLOR-WHITE);
+}
+.goback-btn{
+    background: var( --COLOR-WISHLIST);
+    color: var(--COLOR-WHITE);   
+}
  .quiz-box{
     width: 800px;
     background: var(--COLOR-NOTIFICATION);

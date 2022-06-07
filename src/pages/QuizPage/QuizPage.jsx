@@ -11,7 +11,7 @@ const QuizPage = () => {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [userAns, setUserAns] = useState("")
-
+  const [showRules, setShowRules] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() =>{
@@ -48,7 +48,25 @@ const QuizPage = () => {
     navigate("/");
   }
 
-
+  if(showRules) {
+    return (
+      <div className="main-container">
+      <div className="rule-container">
+        <h1>Rules</h1>
+        <ul className="rule-list">
+          <li>This quiz consists of 5 multiple-choice questions.</li>
+          <li>Points will be awarded : 1 point for each right answer.</li>
+          <li>ach multiple choice question has only one correct answer.</li>
+          <li>To start, click the Start Quiz button. When finished, click the Submit button.</li>
+        </ul>
+        <div className="rule-btn-container">
+          <button onClick={() => navigate("/category")} className="goback-btn">Go back</button>
+          <button onClick={() => setShowRules(false)} className="quiz-start-btn">Start Quiz</button>
+        </div>
+        </div>
+      </div>
+    )
+  }
   
   return (
     <div className="main-container">
@@ -92,7 +110,7 @@ const QuizPage = () => {
                         <div className="total_que">
                             <span>{currentQuestion + 1} of {questions.length} Questions</span>
                         </div>
-                        <button className="next_btn" onClick={MoveToNextQuestion}>Next Question</button>
+                        <button className="next_btn" onClick={MoveToNextQuestion}>{currentQuestion === questions.length - 1 ? "Submit" : "Next Question"}</button>
                         </div>
                     </div>
                     

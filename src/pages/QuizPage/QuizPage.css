@@ -1,0 +1,185 @@
+.question-container{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 100vh;
+    width: 100%;
+}
+.rule-container{
+    border: 1px solid var(--COLOR-TIMER-TEXT);
+    background: var(--COLOR-OPTION-BORDER);
+    border-radius: 10px;
+    /* max-width: 500px; */
+    padding: 1rem;
+    margin: auto;
+}
+.rule-list{
+    margin: 1rem;
+}
+.rule-list > li {
+    list-style-type: disc;
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+}
+.rule-btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+.rule-btn-container > button {
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+}
+.quiz-start-btn{
+    background: var(--COLOR-OPTION-CORRECT-TEXT);
+    color: var(--COLOR-WHITE);
+}
+.goback-btn{
+    background: var( --COLOR-WISHLIST);
+    color: var(--COLOR-WHITE);   
+}
+ .quiz-box{
+    width: 800px;
+    background: var(--COLOR-NOTIFICATION);
+    border-radius: 0.5rem;
+}
+
+.quiz-box header{
+    height: 70px;
+    padding: 0 30px;
+    background: var(--COLOR-NOTIFICATION);
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quiz-box-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.quiz-box-timer{
+    color: var(--COLOR-WHITE);
+    background: var(--COLOR-BTN_QUIT); 
+    height: 45px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.quiz-box-timer .time_left_txt{
+    font-weight: 900;
+    font-size: 17px;
+    user-select: none;
+}
+
+.quiz-box-timer .timer_sec{
+    font-size: 18px;
+    font-weight: 500;
+    height: 30px;
+    width: 45px;
+    color: var(--COLOR-WHITE);
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    background: #343a40;
+    border: 1px solid #343a40;
+    user-select: none;
+}
+
+.quiz-box-question{
+    padding: 25px 30px 20px 30px;
+    background: var(--COLOR-NOTIFICATION);
+}
+
+.quiz-box-question .que_text{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.quiz-box-question .option_list{
+    padding: 20px 0px;
+    display: block;   
+}
+
+.quiz-box-question .option_list .option{
+    background: var(--COLOR-OPTION-BKGD);
+    border: 1px solid var(--COLOR-OPTION-BORDER);
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 17px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quiz-box-question .option_list .option:last-child{
+    margin-bottom: 0px;
+}
+
+.quiz-box-question .option_list .option:hover{
+    color: var(--COLOR-TIMER-TEXT);
+    background: var(--COLOR-TIMER-BKGD);
+    border: 1px solid var(--COLOR-TIMER-BORDER);
+}
+
+
+.quiz-box-question .option_list .option.correct{
+    color: var(--COLOR-OPTION-CORRECT-TEXT);
+    background: var(--COLOR-OPTION-CORRECT-BKGD);
+    border: 1px solid var(--COLOR-OPTION-CORRECT-BORDER);
+}
+
+.quiz-box-question .option_list .option.incorrect{
+    color: var(--COLOR-OPTION-INCORRECT-TEXT);
+    background: var(--COLOR-OPTION-INCORRECT-BKGD);
+    border: 1px solid var(--COLOR-OPTION-INCORRECT-BORDER);
+}
+.quiz-box-question .option_list .option .icon{
+    height: 26px;
+    width: 26px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 13px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    line-height: 24px;
+}
+.option_list .option .icon.tick{
+    color: var(--COLOR-OPTION-CORRECT-TEXT);
+    border-color: var(--COLOR-OPTION-CORRECT-TEXT);
+    background: var(--COLOR-OPTION-CORRECT-BKGD);
+}
+.quiz-box-footer{
+    height: 60px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--COLOR-BORDER);
+}
+.quiz-box-footer .total_que span{
+    font-weight: 500;
+    padding: 0 5px;
+}
+.quiz-box-footer .next_btn{
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    outline: none;
+    color: var(--COLOR-WHITE);
+    border-radius: 5px;
+    background: var(--COLOR-BODY);
+    border: 1px solid var(--COLOR-BODY);
+}
+.quiz-box-footer .next_btn:hover{
+    background: var(--COLOR-BTN-NEXT-QUESTION);
+}

@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth-context";
 import { ToastProvider } from "./context/toast-context";
 import { CategoryProvider } from "./context/category-context"
+import { QuizProvider } from "./context/quiz-context";
 // Call make Server
 makeServer();
 
@@ -16,7 +17,9 @@ ReactDOM.render(
       <BrowserRouter>
         <AuthProvider>
           <CategoryProvider>
-            <App />
+            <QuizProvider>
+              <App />
+            </QuizProvider>
           </CategoryProvider>
         </AuthProvider>
       </BrowserRouter>

@@ -8,22 +8,30 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "HTML",
-    description: "Questions based on HTML",
+    category: "tvshows",
+    categoryName: "TV Shows",
+    description: "Quizzes based on TV shows",
+    img: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bestblack-tv-1617745112.png?crop=1.00xw:1.00xh;0,0&resize=980:*"
   },
   {
     _id: uuid(),
-    categoryName: "CSS",
-    description: "Questions based on CSS",
+    category: "movies",
+    categoryName: "Movies",
+    description: "Quizzes based on Movies",
+    img: "https://nofilmschool.com/sites/default/files/styles/article_wide/public/movies_1.jpg?itok=sq9Irp_k"
   },
   {
     _id: uuid(),
-    categoryName: "Javascript",
-    description: "Questions based on Javascript",
+    category: "sports",
+    categoryName: "Sports",
+    description: "Quizzes based on Sports",
+    img: "https://wheefootball.files.wordpress.com/2015/12/all-sports-banner.png?w=2000&h="
   },
   {
     _id: uuid(),
-    categoryName: "React",
-    description: "Questions based on React",
+    category: "tech",
+    categoryName: "Tech",
+    description: "Quizzes based on Tech",
+    img: "https://digitallearning.eletsonline.com/wp-content/uploads/2020/12/Ed-tech-Revolution.jpg"
   },
 ];

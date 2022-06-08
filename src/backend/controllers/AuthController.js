@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
-import { formatDate } from "../utils/authUtils";
+import { formatDate, requiresAuth } from "../utils/authUtils";
 const sign = require("jwt-encode");
 /**
  * All the routes related to Auth are present here.
@@ -14,7 +14,7 @@ const sign = require("jwt-encode");
  * */
 
 export const signupHandler = function (schema, request) {
-  const { email, password, ...rest } = JSON.parse(request.requestBody);
+  const { name, email, password, ...rest } = JSON.parse(request.requestBody);
   try {
     // check if email already exists
     const foundUser = schema.users.findBy({ email });
@@ -98,19 +98,28 @@ export const loginHandler = function (schema, request) {
   }
 };
 
-// export const checkToken = function (schema, request) {
-//   const userId = requiresAuth.call(this, request);
-//   try {
-//     if (!userId) {
-//       new Response(404, {}, { result: "User Not available / Token not valid" });
-//     }
-//   } catch (error) {
-//     return new Response(
-//       500,
-//       {},
-//       {
-//         error,
-//       }
-//     );
-//   }
-// };
+/**
+ * This handler handles user verification.
+ * send POST Request at /api/auth/verify
+ * */
+export const verifyUser = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        { result: "User Not available / Token not valid" }
+      );
+    }
+    return new Response(200, {}, { user });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};

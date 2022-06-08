@@ -11,11 +11,8 @@ const Navbar = () => {
     const activeLeaderboard = pathname.includes("leaderboard");
     const activeCategory = pathname.includes("category");
     const activeHome = pathname==="/";
-    // let activeHome = false
-    // if(pathname === "/"){
-    //      activeHome = true
-    // }
     const {auth, logoutHandler} = useAuth();
+    
   return (
     <div className="navbar-body">
         <div className="navbar-user-info">

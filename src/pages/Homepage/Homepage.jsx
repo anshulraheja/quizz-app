@@ -11,7 +11,7 @@ const Homepage = () => {
         <Navbar/>
         <div className="homepage-content">
           
-            <h1 className="homepage-header">Welcome to Web Dev Quiz</h1>
+            <h1 className="homepage-header">Welcome to the Quiz App</h1>
             <h2 className="homepage-subheader">Select
               <Link to="/category" className="category-btn">categories</Link>
               to play quiz

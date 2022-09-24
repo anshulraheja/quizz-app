@@ -36,13 +36,13 @@ const LoginPage = () => {
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" placeholder="admin123" id="password" onChange={inputHandler} required />
 
-                        <div className="login-remember">
+                        {/* <div className="login-remember">
                             <span>
                                 <input type="checkbox" id="rememberme" name="rememberme" onChange={inputHandler} />
                                 <label htmlFor="rememberme">Remember me</label>
                             </span>
                             <a href="#">Forgot your password?</a>
-                        </div>
+                        </div> */}
                     </div>
                     <button className="login-button" type="submit">Login</button>
                     <Link to="/signup" className="login-new_account" >Create New Account</Link>
